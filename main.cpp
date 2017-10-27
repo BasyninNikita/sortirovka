@@ -10,8 +10,12 @@ void vvod(double *array,unsigned int size)
     istringstream stream(stroka);
     for(unsigned int i=0;i<size;i++)
     {
-        stream>>array[i];
+        if!(stream>>array[i]){
+            cout<<"nepolnuy massiv";
+            return false;
+        }   
     }
+    return true;
 }
 void selection_sort(double *array, unsigned int size){
     for(unsigned int i=0; i<size-1; ++i){
@@ -42,7 +46,10 @@ int main()
     cin>>size;
     cin.get();
     double *array=new double[size];
-    vvod(array,size);
-    selection_sort(array,size);
-    vyvod(size,array);
+    if(vvod(array,size))
+    {
+        selection_sort(array,size);
+        vyvod(size,array);
+    }
+    delete[]array;
 }
