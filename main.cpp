@@ -3,14 +3,14 @@
 #include <utility>
 #include <sstream>
 using namespace std;
-void vvod(double *array,unsigned int size)
+bool vvod(double *array,unsigned int size)
 {
     string stroka;
     getline(cin,stroka);
     istringstream stream(stroka);
     for(unsigned int i=0;i<size;i++)
     {
-        if!(stream>>array[i]){
+        if(!(stream>>array[i])){
             cout<<"nepolnuy massiv";
             return false;
         }   
